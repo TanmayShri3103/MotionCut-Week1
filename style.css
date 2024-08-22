@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(bg.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+section {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(trees.png) no-repeat center center;
+  background-size: cover;
+  opacity: 0.6; /* Adjust opacity as needed
+   z-index: 1; /*Place it above the background but below the form  */
+}
+
+.animate-image {
+  position: absolute;
+  width: 300px; /* Adjust size as needed */
+  z-index: 2; /* Ensure it's above the background but below the form */
+}
+
+.animated-images-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevents interaction with these images */
+  z-index: 10; /* Ensure images are behind the sign-in form */
+}
+
+.animated-images-container img {
+  position: absolute;
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+}
+
+/* Keyframes for leaf animations */
+@keyframes moveTopToBottomLeaf01 {
+  0% {
+    top: 10px;
+    transform: translateX(0);
+    transform: rotate(45deg);
+  }
+  50%{
+transform: rotate(135deg);
+  }
+  100% {
+    top: calc(40vh - 50px); /* Move to the bottom minus the height of the image */
+    transform: translateX(0);
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes moveTopToBottomLeaf02 {
+  0% {
+    top: 40px;
+    transform: translateX(4vw);
+    transform: rotate(45deg);
+  }
+   50%{
+    transform: rotate(135deg);
+      }
+  100% {
+    top: calc(65vh - 100px); /* Adjusted for visible effect */
+    transform: translateX(4vw);
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes moveTopToBottomLeaf03 {
+  0% {
+    top: 30px;
+    transform: translateX(0vw);
+    transform: rotate(45deg);
+  }
+  50%{
+    transform: rotate(135deg);
+      }
+  100% {
+    top: calc(70vh - 25px); /* Adjusted for visible effect */
+    transform: translateX(0vw);
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes moveTopToBottomLeaf04 {
+  0% {
+    top: 70vh;
+    transform: translateX(0);
+    transform: rotate(45deg);
+  }
+  50%{
+    transform: rotate(135deg);
+      }
+  100% {
+    top: calc(95vh - 25px); /* Move to the bottom minus the height of the image */
+    transform: translateX(0vw);
+    transform: rotate(45deg);
+  }
+}
+
+
+/* Keyframes for girl animation */
+@keyframes moveGirl {
+  0% {
+    transform: translateX(0vw); /* Start off the screen on the left */
+  }
+  33%{
+    transform: translateX(45vw);
+  }
+  66%{
+    transform: translateX(0vw);
+  }
+  100% {
+    transform: translateX(-45vw); /* Move to the right edge of the viewport */
+  }
+}
+
+/* Apply specific animations to each leaf */
+.leaf-01 {
+  top: 10px;
+  left: 10px;
+  mix-blend-mode: color-burn;
+  animation: moveTopToBottomLeaf01 7s ease-in-out infinite; /* Adjust duration and easing */
+}
+
+.leaf-02 {
+  top: calc(50% - 75px); /* Position just above the form */
+  left: 45%;
+  transform: translateX(-50%);
+  z-index: 20; /* Ensure it’s visible over the login form */
+  animation: moveTopToBottomLeaf02 6s linear infinite; /* Adjust duration and easing */
+}
+
+.leaf-03 {
+  top: 10px;
+  right: 10px; /* Position at the top right */
+  animation: moveTopToBottomLeaf03 8s ease-in infinite; /* Adjust duration and easing */
+}
+
+.leaf-04 {
+  bottom: 90px;
+  left: 20px; /* Position at the bottom left */
+  animation: moveTopToBottomLeaf04 5s ease-out infinite; /* Adjust duration and easing */
+}
+
+/* Apply animation to girl image */
+.girl {
+  
+  position: relative;
+  width: 150px; /* Adjust size as needed */
+  bottom: 10px; /* Position at the bottom of the viewport */
+  animation: moveGirl 10s linear infinite; /* Adjust duration and easing */
+}
+
+section .signin {
+  position: absolute;
+  width: 400px;
+  background: rgba(215, 210, 210, 0.8); /* Dark color with transparency */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(213, 208, 208, 0.8);
+}
+
+section .signin .content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+section .signin .content h2 {
+  font-size: 2em;
+  color: #6b1907;
+  text-transform: uppercase;
+}
+
+section .signin .content .form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+section .signin .content .form .inputBox {
+  position: relative;
+  width: 100%;
+}
+
+section .signin .content .form .inputBox input::placeholder {
+  font-weight: 600; /* Make placeholders bold */
+  color: #6b1907; /* Purple text color */
+}
+
+section .signin .content .form .inputBox input {
+  position: relative;
+  width: 100%;
+  background: white;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+section .signin .content .form .inputBox i {
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #6b1907;
+  transition: 0.5s;
+  pointer-events: none;
+  font-weight: 600; /* Make icons bold */
+}
+
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i {
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.signin .content .form .links {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signin .content .form .links a {
+  color: #6b1907;
+  text-decoration: none; /* Remove underline from both links */
+}
+
+.signin .content .form .links a:nth-child(1) {
+  font-weight: 600; /* Make "Forgot Password" bold */
+}
+
+.signin .content .form .links a:nth-child(2) {
+  font-weight: 600; /* "Signup" remains bold */
+  text-decoration: underline; /* Underline only "Signup" */
+}
+
+.signin .content .form .inputBox input[type="submit"] {
+  padding: 10px;
+  background: #6b1907;
+  color: white;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+input[type="submit"]:active {
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  section span {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+}
+
+@media (max-width: 600px) {
+  section span {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
+}
